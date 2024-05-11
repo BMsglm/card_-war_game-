@@ -1,5 +1,5 @@
 '''
-Card will have its suit rank and value.
+Card have its suit rank and value.
 '''
 
 

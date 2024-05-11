@@ -41,7 +41,7 @@ def validate_choice(player, choice):
     while choice not in player.cards:
         choice = input("ERROR!!\nEnter your card choice :")
         ###
-        ### Need to find a way to validate !!!
+        ### Need to find a way to validate !!!!
         ###
     return choice
 

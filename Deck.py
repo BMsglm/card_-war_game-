@@ -1,5 +1,5 @@
 '''
-A deck will have cards in it.
+A deck have cards in it. And can give shuffle put cards.
 '''
 import random
 class Deck():
@@ -20,4 +20,6 @@ class Deck():
     #Give a card from deck
     def put_card(self):
         self.cards.pop()
+
+
    
