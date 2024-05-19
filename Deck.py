@@ -19,7 +19,7 @@ class Deck():
     
     #Give a card from deck
     def put_card(self):
-        self.cards.pop()
+        return self.cards.pop()
 
 
    
