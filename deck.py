@@ -30,7 +30,7 @@ class Deck():
         self.size -= 1
         return self.cards.pop(index)
     
-    #Put card into deck
+    #Put card into deck.
     def take_card(self,card):
         self.cards.append(card)
         self.size +=1
