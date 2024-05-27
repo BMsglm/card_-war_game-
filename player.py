@@ -9,6 +9,14 @@ class Player(Deck):
         self.size = 0
  
     def choice_validate(self,id):
+        '''
+        Validates if the chosen id meet the requirement of the player's deck.
+
+        Args:
+            id(int): Input integer from user.
+        Returns:
+            id(int): Returns the id that met the requirements.
+        '''
         while id < 1 or id > len(self.cards):
           id = int(input("\n !!INPUT ERROR!! \nYour choice must be an integer from your deck!\nFor example: 4\n\nEnter your card choice :"))
         #Return choice.
@@ -16,7 +24,14 @@ class Player(Deck):
         
     #Taking choice from user.
     def choose_card(self):
-        
+        '''
+        Takes an input for a card choice.
+
+        Args:
+            ...
+        Returns
+            card(obj): The card that user selected.
+        '''
         #Get the choice.
         card_id = int(input("\nEnter your card choice :"))
         #Validate the input.

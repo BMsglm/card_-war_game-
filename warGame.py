@@ -127,54 +127,61 @@ def main():
         else:
             print('\n\nWAR!!\n\n')
             #Take cards from users to put on table
-            print('Player 1 choose your cards to put on Table :')
-            for i in range(2):
-                choice_first = card_selection(player1)
-                if(winner_check(player1,player2)):
-                    gameOn=False
-                    break
-                deck_table.take_card(player1.put_card(choice_first))
-            print('Player 2 choose your card to Put on Table :')
-            for i in range(2):
-                choice_second = card_selection(player2)
-                if(winner_check(player1,player2)):
-                    gameOn=False
-                    break
-                deck_table.take_card(player2.put_card(choice_second))
-            #Go into war!
-            war = True
-            while war:
-                if(winner_check(player1,player2)):
-                    gameOn=False
-                    break
+            if len(player1.cards) < 3 and len(player2.cards) < 3:
+                print('TIE!!')
+            elif len(player1.cards) < 3:
+                print('Player 2 wins!')
+            elif len(player2.cards) < 3:
+                print('Player 1 wins!')
+            else:
+                print('Player 1 choose your cards to put on Table :')
+                for i in range(2):
+                    choice_first = card_selection(player1)
+                    if(winner_check(player1,player2)):
+                        gameOn=False
+                        break
+                    deck_table.take_card(player1.put_card(choice_first))
+                print('Player 2 choose your card to Put on Table :')
+                for i in range(2):
+                    choice_second = card_selection(player2)
+                    if(winner_check(player1,player2)):
+                        gameOn=False
+                        break
+                    deck_table.take_card(player2.put_card(choice_second))
+                #Go into war!
+                war = True
+                while war:
+                    if(winner_check(player1,player2)):
+                        gameOn=False
+                        break
 
-                #Ask each player for selection.
-                print('Player 1 choose your card to win those card on the table.')
-                choice_first = card_selection(player1)
-                print('Player 2 choose your card to win those card on the table.')
-                choice_second = card_selection(player2)
-                
-                #If still in war continue to take new cards from each player.
-                if choice_first.value == choice_second.value:
-                    continue
+                    #Ask each player for selection.
+                    print('Player 1 choose your card to win those card on the table.')
+                    choice_first = card_selection(player1)
+                    print('Player 2 choose your card to win those card on the table.')
+                    choice_second = card_selection(player2)
+                    
+                    #If still in war continue to take new cards from each player.
+                    if choice_first.value == choice_second.value:
+                        continue
 
-                #Else give all the cards on the table to winning player.
-                else:
-                    #When 1st player won
-                    if(choice_first.value > choice_second.value):
-                        #Give all the cards to winning player
-                        for i in range(len(table_deck.cards)):
-                            print('Player takes the card', table_deck.cards[-1].suit,table_deck.cards[-1].rank,'from the table')
-                            player1.take_card(table_deck.put_card())
-
-                    #When 2st player won
+                    #Else give all the cards on the table to winning player.
                     else:
-                        #Give all the cards to winning player
-                        for i in range(len(table_deck.cards)):
-                            print('Player takes the card', table_deck.cards[-1].suit,table_deck.cards[-1].rank,'from the table')
-                            player2.take_card(table_deck.put_card())
-                    #The war has ended.
-                    war = False
+                        #When 1st player won
+                        if(choice_first.value > choice_second.value):
+                            #Give all the cards to winning player
+                            for i in range(len(table_deck.cards)):
+                                print('Player takes the card', table_deck.cards[-1].suit,table_deck.cards[-1].rank,'from the table')
+                                player1.take_card(table_deck.put_card())
+
+                        #When 2st player won
+                        else:
+                            #Give all the cards to winning player
+                            for i in range(len(table_deck.cards)):
+                                print('Player takes the card', table_deck.cards[-1].suit,table_deck.cards[-1].rank,'from the table')
+                                player2.take_card(table_deck.put_card())
+                        #The war has ended.
+                        war = False
 
 if __name__ == "__main__":
     main()
